@@ -1,6 +1,8 @@
 const indexSearch = require('./plugins/search-index');
 const feed = require('./plugins/feed');
 const sitemap = require('./plugins/sitemap');
+const redirectPlugin = require('./plugins/redirect');
+
 // const socialImages = require('./plugins/socialImages'); TODO: failing to run on Netlify
 
 /** @type {import('next').NextConfig} */
@@ -36,7 +38,7 @@ const nextConfig = {
 };
 
 module.exports = () => {
-  const plugins = [indexSearch, feed, sitemap];
+const plugins = [indexSearch, feed, sitemap, redirectPlugin];
   return plugins.reduce((acc, plugin) => plugin(acc), nextConfig);
 };
 
